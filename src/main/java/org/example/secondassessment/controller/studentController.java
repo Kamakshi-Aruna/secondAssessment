@@ -16,6 +16,7 @@ public class studentController {
     @Autowired
     studentService service;
 
+// Inserting the data
     @PostMapping
     @ResponseBody
     public String insertStudent(@RequestBody Student student) {
@@ -23,26 +24,28 @@ public class studentController {
            return "Data Inserted Successfully!!";
     }
 
+//  Fetching the data using id
     @GetMapping("/{id}")
     public Optional<Student> fetchData(@PathVariable String id){
        return  service.fetchData(id);
     }
-
+// Fetch all the data
     @GetMapping
     public List<Student> fetchAllData(){
         return service.fetchAllData();
     }
 
+//   Fetch all the data
     @DeleteMapping("/{id}")
     public String deleteData(@PathVariable String id){
         return service.deleteData(id);
     }
-
+//  Delete the data using id
     @DeleteMapping
     public String deleteAllData(){
        return  service.deleteAllData();
     }
-
+// Update the data
     @PutMapping("/{id}")
     public ResponseEntity<Student> updateStudent(@PathVariable String id, @RequestBody Student student){
          Student data=service.updateData(id,student);
